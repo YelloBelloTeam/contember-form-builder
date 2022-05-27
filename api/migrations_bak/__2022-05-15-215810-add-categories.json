@@ -1,0 +1,35 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "updateColumnDefinition",
+			"entityName": "Category",
+			"fieldName": "title",
+			"definition": {
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "updateColumnDefinition",
+			"entityName": "Category",
+			"fieldName": "slug",
+			"definition": {
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "Category",
+			"unique": {
+				"fields": [
+					"slug"
+				],
+				"name": "unique_Category_slug_716974"
+			}
+		}
+	]
+}

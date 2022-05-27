@@ -1,0 +1,45 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "Category",
+			"fieldName": "content"
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Category",
+			"owningSide": {
+				"name": "content",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "Content",
+				"joiningColumn": {
+					"columnName": "content_id",
+					"onDelete": "set null"
+				},
+				"orphanRemoval": true
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/admin/entities/Category/operations/create/content",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/admin/entities/Category/operations/update/content",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/admin/entities/Category/operations/read/content",
+					"value": true
+				}
+			]
+		}
+	]
+}

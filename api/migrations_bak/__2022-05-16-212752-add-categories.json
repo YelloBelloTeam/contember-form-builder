@@ -1,0 +1,22 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "remove",
+					"path": "/roles/public/entities/CategoryInput/operations/create"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/public/entities/CategoryInput/operations/update"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/public/entities/CategoryInput/operations/delete"
+				}
+			]
+		}
+	]
+}

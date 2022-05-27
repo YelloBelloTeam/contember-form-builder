@@ -1,0 +1,409 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "createEnum",
+			"enumName": "CategoryInputType",
+			"values": [
+				"shortAnswer",
+				"paragraph",
+				"multipeChoice",
+				"checkBoxes",
+				"dropDown",
+				"fileUpload",
+				"date",
+				"dateTime"
+			]
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "CategoryInput",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "category_input"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "CategoryOption",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "category_option"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "CategoryInput",
+			"field": {
+				"name": "order",
+				"columnName": "order",
+				"nullable": false,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "CategoryInput",
+			"field": {
+				"name": "type",
+				"columnName": "type",
+				"nullable": false,
+				"type": "Enum",
+				"columnType": "CategoryInputType"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "CategoryInput",
+			"field": {
+				"name": "question",
+				"columnName": "question",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "CategoryInput",
+			"field": {
+				"name": "placeholder",
+				"columnName": "placeholder",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "CategoryInput",
+			"field": {
+				"name": "date",
+				"columnName": "date",
+				"nullable": true,
+				"type": "Date",
+				"columnType": "date"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "CategoryInput",
+			"field": {
+				"name": "dateTime",
+				"columnName": "date_time",
+				"nullable": true,
+				"type": "DateTime",
+				"columnType": "timestamptz"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "CategoryInput",
+			"field": {
+				"name": "required",
+				"columnName": "required",
+				"nullable": false,
+				"default": false,
+				"type": "Bool",
+				"columnType": "boolean"
+			},
+			"fillValue": false
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "CategoryOption",
+			"field": {
+				"name": "order",
+				"columnName": "order",
+				"nullable": false,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "CategoryOption",
+			"field": {
+				"name": "value",
+				"columnName": "value",
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "CategoryInput",
+			"owningSide": {
+				"name": "category",
+				"inversedBy": "inputs",
+				"nullable": false,
+				"type": "ManyHasOne",
+				"target": "Category",
+				"joiningColumn": {
+					"columnName": "category_id",
+					"onDelete": "cascade"
+				}
+			},
+			"inverseSide": {
+				"name": "inputs",
+				"ownedBy": "category",
+				"type": "OneHasMany",
+				"target": "CategoryInput",
+				"orderBy": [
+					{
+						"path": [
+							"order"
+						],
+						"direction": "asc"
+					}
+				]
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "CategoryInput",
+			"owningSide": {
+				"name": "file",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "File",
+				"joiningColumn": {
+					"columnName": "file_id",
+					"onDelete": "set null"
+				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "CategoryOption",
+			"owningSide": {
+				"name": "categoryInput",
+				"inversedBy": "options",
+				"nullable": false,
+				"type": "ManyHasOne",
+				"target": "CategoryInput",
+				"joiningColumn": {
+					"columnName": "category_input_id",
+					"onDelete": "cascade"
+				}
+			},
+			"inverseSide": {
+				"name": "options",
+				"ownedBy": "categoryInput",
+				"type": "OneHasMany",
+				"target": "CategoryOption",
+				"orderBy": [
+					{
+						"path": [
+							"order"
+						],
+						"direction": "asc"
+					}
+				]
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/admin/entities/CategoryInput",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"create": {
+								"id": true,
+								"order": true,
+								"type": true,
+								"category": true,
+								"question": true,
+								"placeholder": true,
+								"options": true,
+								"file": true,
+								"date": true,
+								"dateTime": true,
+								"required": true
+							},
+							"read": {
+								"id": true,
+								"order": true,
+								"type": true,
+								"category": true,
+								"question": true,
+								"placeholder": true,
+								"options": true,
+								"file": true,
+								"date": true,
+								"dateTime": true,
+								"required": true
+							},
+							"update": {
+								"id": true,
+								"order": true,
+								"type": true,
+								"category": true,
+								"question": true,
+								"placeholder": true,
+								"options": true,
+								"file": true,
+								"date": true,
+								"dateTime": true,
+								"required": true
+							},
+							"delete": true,
+							"customPrimary": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/admin/entities/CategoryOption",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"create": {
+								"id": true,
+								"order": true,
+								"value": true,
+								"categoryInput": true
+							},
+							"read": {
+								"id": true,
+								"order": true,
+								"value": true,
+								"categoryInput": true
+							},
+							"update": {
+								"id": true,
+								"order": true,
+								"value": true,
+								"categoryInput": true
+							},
+							"delete": true,
+							"customPrimary": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/admin/entities/Category/operations/create/inputs",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/admin/entities/Category/operations/update/inputs",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/admin/entities/Category/operations/read/inputs",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Category",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"id": true,
+								"title": true,
+								"slug": true,
+								"content": true,
+								"inputs": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/CategoryOption",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"id": true,
+								"order": true,
+								"value": true,
+								"categoryInput": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/CategoryInput",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"id": true,
+								"order": true,
+								"type": true,
+								"category": true,
+								"question": true,
+								"placeholder": true,
+								"options": true,
+								"file": true,
+								"date": true,
+								"dateTime": true,
+								"required": true
+							},
+							"create": {
+								"id": false,
+								"order": false,
+								"type": false,
+								"category": false,
+								"question": false,
+								"placeholder": false,
+								"options": false,
+								"file": false,
+								"date": false,
+								"dateTime": false,
+								"required": false
+							},
+							"update": {
+								"id": true,
+								"order": true,
+								"type": true,
+								"category": true,
+								"question": true,
+								"placeholder": true,
+								"options": true,
+								"file": true,
+								"date": true,
+								"dateTime": true,
+								"required": true
+							},
+							"delete": false
+						}
+					}
+				}
+			]
+		}
+	]
+}

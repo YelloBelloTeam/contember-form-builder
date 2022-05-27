@@ -1,0 +1,17 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "removeEntity",
+			"entityName": "CategoryInput"
+		},
+		{
+			"modification": "removeEntity",
+			"entityName": "CategoryOption"
+		},
+		{
+			"modification": "removeEnum",
+			"enumName": "CategoryInputType"
+		}
+	]
+}

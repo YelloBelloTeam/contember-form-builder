@@ -74,6 +74,9 @@ export default function Form(props: any) {
 						}
 					</article>
 				</section>
+        <aside>
+          <a href="/">◀︎&nbsp;Back</a>
+        </aside>
 			</main>
 		</>
 	)

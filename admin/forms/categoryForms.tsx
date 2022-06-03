@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { Component, DateTimeField, LinkButton, Section, SlugField, TextField } from '@contember/admin'
-import { CategoryInputs } from '../components/CategoryInputs'
-import { PreviewLink } from '../components/PreviewLink'
+//import { CategoryInputs } from '../components/CategoryInputs'
+//import { PreviewLink } from '../components/PreviewLink'
 import locale from '../locales'
 import { ContentField } from '../components/ContentField'
 
-export const CategorySideForm = Component(
+/*export const CategorySideForm = Component(
 	() => (
 		<>
 			<PreviewLink slugField="slug" prefix="/category/" />
@@ -13,7 +13,7 @@ export const CategorySideForm = Component(
 		</>
 	),
 	'CategorySideForm',
-)
+)*/
 
 export const CategoryForm = Component(
 	() => (
@@ -30,9 +30,9 @@ export const CategoryForm = Component(
 				<ContentField />
 			</Section>
       
-			<Section heading={locale['Fields']}>
+			{/*<Section heading={locale['Fields']}>
 				<CategoryInputs />
-			</Section>
+			</Section>*/}
 		</>
 	),
 	'CategoryForm',

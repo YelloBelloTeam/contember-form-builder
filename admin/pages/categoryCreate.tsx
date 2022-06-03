@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { CreatePage, RichTextField, TextField } from '@contember/admin'
-import { CategoryForm, CategorySideForm } from '../forms/categoryForms'
+import { CategoryForm/*, CategorySideForm*/ } from '../forms/categoryForms'
 
 export default () => (
   <CreatePage

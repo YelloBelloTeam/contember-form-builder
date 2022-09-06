@@ -7,6 +7,6 @@ export class Category {
 	title = def.stringColumn().notNull()
 	slug = def.stringColumn().unique()//.notNull()
 	//content = def.oneHasOne(Content).removeOrphan().setNullOnDelete()
-	object = def.oneHasMany(Category, 'category').orderBy('order')
+	object = def.oneHasMany(Category, 'category')//.orderBy('order')
 	//inputs = def.oneHasMany(CategoryInput, 'category').orderBy('order')
 }

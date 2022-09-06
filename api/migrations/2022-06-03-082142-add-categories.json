@@ -1,0 +1,15 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "updateColumnDefinition",
+			"entityName": "Category",
+			"fieldName": "slug",
+			"definition": {
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		}
+	]
+}

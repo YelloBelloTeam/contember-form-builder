@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Component, DateTimeField, LinkButton, Section, SlugField, TextField } from '@contember/admin'
+import { Component, DateTimeField, LinkButton, Section, SlugField, TextField, HasMany } from '@contember/admin'
 //import { CategoryInputs } from '../components/CategoryInputs'
 //import { PreviewLink } from '../components/PreviewLink'
 import locale from '../locales'
@@ -28,6 +28,9 @@ export const CategoryForm = Component(
 					unpersistedHardPrefix={(environment) => `${environment.getValue('WEB_URL')}/category/`}
 				/>
 				<ContentField />
+				{/*<HasMany field="object">
+          <TextField field="title" label="Object" />
+        </HasMany>*/}
 			</Section>
       
 			{/*<Section heading={locale['Fields']}>

@@ -80,20 +80,20 @@ const aclFactory = (model: Model.Schema): Acl.Schema => ({
 					predicates: {},
 					operations: readOnly(model, 'Category', true),
 				},
-				CategoryOption: {
+				/*CategoryOption: {
 					predicates: {},
 					operations: readOnly(model, 'CategoryOption', true),
-				},
-				CategoryInput: {
+				},*/
+				/*CategoryInput: {
 					predicates: {},
-					/*operations: {
-						read: allField(model, 'CategoryInput', true),
-						create: allField(model, 'CategoryInput', false),
-						update: allField(model, 'CategoryInput', true),
-						delete: false,
-					},*/
+					//operations: {
+						//read: allField(model, 'CategoryInput', true),
+						//create: allField(model, 'CategoryInput', false),
+						//update: allField(model, 'CategoryInput', true),
+						//delete: false,
+					//},
 					operations: readOnly(model, 'CategoryInput', true),
-				},
+				},*/
 				Image: {
 					predicates: {},
 					operations: readOnly(model, 'Image', true),

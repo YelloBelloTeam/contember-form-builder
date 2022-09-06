@@ -1,0 +1,95 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "Category",
+			"fieldName": "content"
+		},
+		{
+			"modification": "updateColumnDefinition",
+			"entityName": "Category",
+			"fieldName": "slug",
+			"definition": {
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "updateColumnDefinition",
+			"entityName": "ContentPart",
+			"fieldName": "json",
+			"definition": {
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "makeRelationNullable",
+			"entityName": "ContentPart",
+			"fieldName": "content"
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Category",
+			"owningSide": {
+				"name": "object",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "Category",
+				"joiningColumn": {
+					"columnName": "object_id",
+					"onDelete": "set null"
+				},
+				"orphanRemoval": true
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "Category",
+			"unique": {
+				"fields": [
+					"slug"
+				],
+				"name": "unique_Category_slug_716974"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/admin/entities/Category/operations/create/object",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/admin/entities/Category/operations/update/object",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/admin/entities/Category/operations/read/object",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Category",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"id": true,
+								"title": true,
+								"slug": true,
+								"object": true
+							}
+						}
+					}
+				}
+			]
+		}
+	]
+}
